@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    tools {
+        maven 'devops_maven'
+    }
+    stages {
+            stage('PullTheCode') {
+                steps {
+                git 'https://github.com/prateekdevisingh/Sonarqube-code-coverage-java.git'
+                }
+            }
+
+            stage('Complie') {
+                steps {
+                sh 'mvn compile'
+                }
+            }
+
+            stage('Test') {
+                steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true test'
+                }
+            }
+
+            stage('Package') {
+                steps {
+                sh 'mvn -Dmaven.test.failure.ignore=true package'
+                }
+            }
+            stage('ShowTheContent') {
+                steps {
+                sh 'ls -R'
+                }
+            }
+
+    }
+}

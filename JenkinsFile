@@ -6,7 +6,7 @@ pipeline {
     stages {
             stage('PullTheCode') {
                 steps {
-                git 'https://github.com/prateekdevisingh/Sonarqube-code-coverage-java.git'
+                git 'https://github.com/kiranp227/war-web-project.git'
                 }
             }
 
